@@ -1,0 +1,13 @@
+Package: HnndPR
+Type: Package
+Title: fast hierarchical density-based clustering method
+Version: 0.1.0
+Author: Teng Qiu
+Maintainer: Teng Qiu <qiutengcool@163.com>
+Description: Hierarchical Nearest Neighbor Descent, In-Tree, and Clustering
+License: 
+Encoding: UTF-8
+LazyData: true
+Imports:
+Suggests:
+RoxygenNote: 6.1.1
