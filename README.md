@@ -1,8 +1,7 @@
 # Quick start
-Two demos are shown in the ##test## file.
+Two demos are shown in the **test** file.
 
-# Introduction
-## Hierarchical Nearest Neighbor Descent, In-Tree, and Clustering
+# Introduction (Hierarchical Nearest Neighbor Descent, In-Tree, and Clustering)
 
 Recently, we have proposed a physically-inspired graph-theoretical method,
 called the Nearest Descent (ND), which is capable of organizing a dataset
