@@ -3,11 +3,7 @@ library('HnndPR')
 # datasets ----------------------------------------------------------------
 # data_names_ori = 'cytof_h2'
 data_names_ori = 'cytof_h1'
-# data_names_ori = 'Samusik_01'
-# data_names_ori = 'Samusik_all'
-# data_names_ori = 'single.cell.mrna.pollen'
-# data_names_ori = 'PalmData25_uni'
-# data_names_ori = c('cytof_h1','cytof_h2','cytof_one','Samusik_01','Samusik_all','bipolar','single.cell.mrna.pollen')
+
 
 result_all = data.frame()
 for (data_name in data_names_ori){
