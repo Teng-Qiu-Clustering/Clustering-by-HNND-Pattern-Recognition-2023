@@ -4,11 +4,25 @@
 \alias{NND}
 \title{Nearest Neighbor Descent}
 \usage{
-NND(P_Amp, knn)
+NND(F, knn)
+}
+\arguments{
+\item{F}{density vector}
+
+\item{knn}{a list}
+}
+\value{
+W:   edge weight vector;
+
+I:   parent node vector;
+
+roots:   indexes of the root nodes;
+
+K_optimal:   which neighbor each parent node is;
 }
 \description{
 Nearest Neighbor Descent (equivalent to Nearest Neighbor Ascent)
 }
-\examples{
-
+\author{
+Teng Qiu
 }

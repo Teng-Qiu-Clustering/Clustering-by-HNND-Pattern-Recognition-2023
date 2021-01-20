@@ -4,12 +4,14 @@
 \alias{simlified_knn_density_estimation_v1}
 \title{density estimation}
 \usage{
-simlified_knn_density_estimation_v1(knn, k)
+simlified_knn_density_estimation_v1(knn)
+}
+\arguments{
+\item{knn}{a list (knn$nn.dist: knn distance matrix)}
+}
+\value{
+F: density vector
 }
 \description{
 simlified knn density estimation (v1)
 }
-\examples{
-
-}
-\keyword{simlified_knn_density_estimation_v1}

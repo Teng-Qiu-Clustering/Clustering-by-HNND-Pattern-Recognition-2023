@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "#' @title density estimation\n#'\n#' @description simlified knn density estimation (v1)\n#'\n#'\n#' @param knn a list (knn$nn.dist: knn distance matrix)\n#'\n#' @return F: density vector\n#'\nsimlified_knn_density_estimation_v1=function(knn){\n\n  Radius = apply(knn$nn.dist,1,max)\n  F = 1/Radius\n\n  idx = which(is.infinite(F))\n  if (length(idx)!=0){\n    F[idx] = max(F[-idx])\n  }\n\n\n  return(F=F)\n}\n",
+    "created" : 1611142644984.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2477866102",
+    "id" : "D45AA2BC",
+    "lastKnownWriteTime" : 1611146903,
+    "last_content_update" : 1611146903841,
+    "path" : "F:/Download_code/TPE/tpe/R/HnndPRdata/Clustering-by-HNND-PR-Github/R/simlified_knn_density_estimation_v1.R",
+    "project_path" : "R/simlified_knn_density_estimation_v1.R",
+    "properties" : {
+    },
+    "relative_order" : 10,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

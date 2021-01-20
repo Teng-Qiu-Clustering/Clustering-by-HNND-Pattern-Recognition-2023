@@ -6,9 +6,20 @@
 \usage{
 queryKnnHNSW(ann, x, K, disName)
 }
+\arguments{
+\item{ann}{constructed search index}
+
+\item{x}{dataset}
+
+\item{K}{number of nearest neighbors}
+
+\item{disName}{distanc measurement}
+}
+\value{
+nn.index:   a neighbor index matrix
+
+nn.dist:   a neighbor distance matrix
+}
 \description{
 get the k-nearest-neighbors of the query points
-}
-\examples{
-
 }

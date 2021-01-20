@@ -4,11 +4,27 @@
 \alias{ND}
 \title{Nearest Descent}
 \usage{
-ND(P_Amp, x, disName = "euclidean")
+ND(F, x, disName = "euclidean")
+}
+\arguments{
+\item{F}{density vector}
+
+\item{x}{test dataset}
+
+\item{disName}{distanc measurement}
+}
+\value{
+W:   edge weight vector;
+
+I:   parent node vector;
+
+F:   density vector;
+
+root:   index of the root node (there is only one root node);
 }
 \description{
 Nearest Descent (equivalent to Nearest Ascent)
 }
-\examples{
-
+\author{
+Teng Qiu
 }

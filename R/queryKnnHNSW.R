@@ -2,15 +2,14 @@
 #'
 #' @description get the k-nearest-neighbors of the query points
 #'
-#' @param ann
-#' @param x
-#' @param K
-#' @param disName
+#' @param ann constructed search index
+#' @param x dataset
+#' @param K number of nearest neighbors
+#' @param disName distanc measurement
 #'
-#' @export nn.index
-#' @export nn.dist
+#' @return nn.index:   a neighbor index matrix
+#' @return nn.dist:   a neighbor distance matrix
 #'
-#' @examples
 #'
 queryKnnHNSW = function(ann,x,K,disName) {
   # You can get distances with:

@@ -1,19 +1,17 @@
 #' @title Decision Graph
 #' @description Decision Graph for determing the inter-cluster edge nodes
 #'
-#' @param result
+#' @param W edge weight vector
+#' @param I parent node vector
+#' @param Density density vector
 #'
-#' @export result
+#' @return peaks: indexes of the densit-peak nodes
 #'
-#' @examples
-#'
-DecisionGraph=function(result,Log = "xy"){
+DecisionGraph=function(W,I,Density,Log = "xy"){
 
-  result$peaks <- NA
-  I = result$I_forInTree
-  A = (result$Density_initial+result$Density_initial[I])/2
 
-  B = result$W_forInTree
+  A = (Density+Density[I])/2
+  B = W
 
 
   if (Log == "y"){
@@ -39,12 +37,12 @@ DecisionGraph=function(result,Log = "xy"){
     delta <- threshold$y[i]
     peaks <- c(peaks,which(A > rho &  B > delta))
   }
-  result$peaks = unique(peaks)
+  peaks = unique(peaks)
 
-  points(A[result$peaks],B[result$peaks], col = 2:(1 + length(result$peaks)),
+  points(A[peaks],B[peaks], col = 2:(1 + length(peaks)),
          pch = 19,cex = 0.7)
 
-  return(result)
+  return(peaks)
 }
 
 

@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "#' @title Nearest Descent\n#'\n#' @description Nearest Descent (equivalent to Nearest Ascent)\n#'\n#'\n#' @param F density vector\n#' @param x test dataset\n#' @param disName distanc measurement\n#'\n#' @return W:   edge weight vector;\n#' @return I:   parent node vector;\n#' @return F:   density vector;\n#' @return root:   index of the root node (there is only one root node);\n#'\n#' @author Teng Qiu\n#'\nND = function(F,x,disName = 'euclidean'){\n  # ND_less_space_consumption\n  N = length(F)\n  W=vector(\"numeric\",N)\n  I=vector(\"numeric\",N)\n  Totoltime = vector(\"numeric\",N)\n  # print(N)\n  for (i in seq(N)){\n    # time_start<-Sys.time()\n    # print(N)\n    # print(paste(i,'/',N))\n    Di=vector(\"numeric\",N)\n    Ci = F[i]-F\n    Di[Ci>0]=Inf\n    Di[(Ci==0)&(i>=seq(N))]=Inf\n    candidate_id = which(!is.infinite(Di))\n    for (j in 1:length(candidate_id)){\n      if (disName == 'euclidean'){\n        Di[candidate_id[j]] = sqrt(sum((x[i,]-x[candidate_id[j],])^2))\n      } else if (disName == 'cosine'){\n        Di[candidate_id[j]] = 1-sum(x[i,]*x[candidate_id[j],])/sqrt(sum(x[i,]^2)*sum(x[candidate_id[j],]^2))\n      } else if (disName == 'l2'){\n        Di[candidate_id[j]] = sum((x[i,]-x[candidate_id[j],])^2)\n      } else {\n        stop(\"the specified distance function is currently not supported\")\n      }\n    }\n    idx = which.min(Di)\n    I[i] = idx\n    W[i] = Di[idx]\n    if (is.infinite(W[i])){\n      W_Max_idx = i\n      I[i]=i\n      W[i]=0\n    }\n    # time_end<-Sys.time()\n\n    # print(Totoltime[i]<-time_end-time_start)\n    # if (i%%10 == 0){\n    #   print(c(\"average time:\",mean(Totoltime[1:10])))\n    # }\n  }\n  return(list(W=W,I=I,root =W_Max_idx ))\n}\n",
+    "created" : 1611140791674.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "482478161",
+    "id" : "DCE1FF19",
+    "lastKnownWriteTime" : 1611147063,
+    "last_content_update" : 1611147063724,
+    "path" : "F:/Download_code/TPE/tpe/R/HnndPRdata/Clustering-by-HNND-PR-Github/R/ND.R",
+    "project_path" : "R/ND.R",
+    "properties" : {
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -4,12 +4,18 @@
 \alias{DecisionGraph}
 \title{Decision Graph}
 \usage{
-DecisionGraph(result, Log = "xy")
+DecisionGraph(W, I, Density, Log = "xy")
+}
+\arguments{
+\item{W}{edge weight vector}
+
+\item{I}{parent node vector}
+
+\item{Density}{density vector}
+}
+\value{
+peaks: indexes of the densit-peak nodes
 }
 \description{
 Decision Graph for determing the inter-cluster edge nodes
 }
-\examples{
-
-}
-\keyword{DecisionGraph}

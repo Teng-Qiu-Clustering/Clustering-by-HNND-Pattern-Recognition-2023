@@ -3,27 +3,20 @@
 #' @description simlified knn density estimation (v1)
 #'
 #'
-#' @param knn
-#' @param k
+#' @param knn a list (knn$nn.dist: knn distance matrix)
 #'
-#' @export P_Amp
-#' @examples
+#' @return F: density vector
 #'
-simlified_knn_density_estimation_v1=function(knn,k){
-  # note that the motivation for this samplification are that 1) since we only care the relative density values of the two nodes,
-  # 2) the distances of each node to the neighbors are ranked in ascending order in knn$nn.dist
+simlified_knn_density_estimation_v1=function(knn){
 
   Radius = apply(knn$nn.dist,1,max)
-  P_Amp = 1/Radius
+  F = 1/Radius
 
-  # Radius = knn$nn.dist[,k]
-  # P_Amp = 1/Radius
-
-  idx = which(is.infinite(P_Amp))
+  idx = which(is.infinite(F))
   if (length(idx)!=0){
-    P_Amp[idx] = max(P_Amp[-idx])
+    F[idx] = max(F[-idx])
   }
 
 
-  return(P_Amp=P_Amp)
+  return(F=F)
 }

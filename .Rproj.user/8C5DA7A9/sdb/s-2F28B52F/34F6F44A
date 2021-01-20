@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "#' @title Find k-nearest-neighbors (by HNSW)\n#'\n#' @description get the k-nearest-neighbors of the query points\n#'\n#' @param ann constructed search index\n#' @param x dataset\n#' @param K number of nearest neighbors\n#' @param disName distanc measurement\n#'\n#' @return nn.index:   a neighbor index matrix\n#' @return nn.dist:   a neighbor distance matrix\n#'\n#'\nqueryKnnHNSW = function(ann,x,K,disName) {\n  # You can get distances with:\n  # res <- p$getAllNNsList(data, k = 1, include_distances = TRUE)\n  # res$dist contains the distance matrix, res$item stores the indexes\n\n  knn_res <- ann$getAllNNsList(x, K, include_distances = TRUE)\n\n  nn.dist = knn_res$dist[,-1]\n\n  if (disName == \"euclidean\"){\n    ## Note: the distance output of \"ann$getAllNNsList\"\n    ## is the square of that of function \"hnsw_search(x,ann,K+1)\" in \"hnsw\" package\n    nn.dist = sqrt(nn.dist)\n  }\n\n  nn.index = knn_res$item[,-1]\n\n  if (!is.matrix(nn.index)){\n    nn.index = as.matrix(nn.index,length(nn.index),1)\n    nn.dist = as.matrix(nn.dist,length(nn.dist),1)\n  }\n  return(list(nn.index=nn.index,\n              nn.dist =nn.dist)\n  )\n}\n",
+    "created" : 1611142626904.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2834959637",
+    "id" : "34F6F44A",
+    "lastKnownWriteTime" : 1611147881,
+    "last_content_update" : 1611147881359,
+    "path" : "F:/Download_code/TPE/tpe/R/HnndPRdata/Clustering-by-HNND-PR-Github/R/queryKnnHNSW.R",
+    "project_path" : "R/queryKnnHNSW.R",
+    "properties" : {
+    },
+    "relative_order" : 9,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

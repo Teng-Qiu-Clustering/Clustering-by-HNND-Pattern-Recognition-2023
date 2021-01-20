@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# Quick start\nA demo can be found in the **test** file.\n\n# Introduction (Hierarchical Nearest Neighbor Descent, In-Tree, and Clustering)\n\nRecently, we have proposed a physically-inspired graph-theoretical method,\ncalled the Nearest Descent (ND), which is capable of organizing a dataset\ninto an in-tree graph structure. Due to some beautiful and effective features,\nthe constructed in-tree proves well-suited for data clustering. Although\nthere exist some undesired edges (i.e., the inter-cluster edges) in this in-tree,\nthose edges are usually very distinguishable, in sharp contrast to the cases\nin the famous Minimal Spanning Tree (MST). Here, we propose another\ngraph-theoretical method, called the Hierarchical Nearest Neighbor Descent\n(HNND). Like ND, HNND also organizes a dataset into an in-tree, but in\na more efficient way. Consequently, HNND-based clustering (HNND-C) is\nmore efficient than ND-based clustering (ND-C) as well. This is well proved\nby the experimental results on five high-dimensional and large-size mass cytometry\ndatasets. The experimental results also show that HNND-C achieves\noverall better performance than some state-of-the-art clustering methods.\n",
+    "created" : 1611144246323.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3438180040",
+    "id" : "26D2A6B2",
+    "lastKnownWriteTime" : 1611144265,
+    "last_content_update" : 1611144265573,
+    "path" : "F:/Download_code/TPE/tpe/R/HnndPRdata/Clustering-by-HNND-PR-Github/README.md",
+    "project_path" : "README.md",
+    "properties" : {
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "markdown"
+}

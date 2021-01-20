@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "data_name = 'cytof.benchmark.h1';\ndata('cytof.benchmark.h1')\nx = cytof.benchmark.h1$x\n\nN = nrow(x)\nK = ceiling(log2(N))\n\nTotoltime<-system.time(\n  result <- HNND_C(\n    x = x,\n    K = K,\n    h = K,\n    disName = \"euclidean\",\n    LogPlot = '')\n)[3]\n\n# evaluate\nannotation_data = as.numeric(factor(cytof.benchmark.h1$metadata$cell))\n\nCScores = Evaluate_clustering_result(data_name = data_name,result$Label,annotation_data,EvaIndex = c('NMI','ARI'))\n\nSta_result = data.frame(\n  N = N,\n  Dim = ncol(x),\n  NMI = round(CScores$NMI,digits = 3),\n  ARI = round(CScores$ARI,digits = 3),\n  RunTime = round(Totoltime-result$time_DG,digits = 3),\n  ClusterNumber = length(unique(result$Label)))\n\nprint(Sta_result)\n",
+    "created" : 1611131316352.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1487264045",
+    "id" : "5C1B47EA",
+    "lastKnownWriteTime" : 1611143865,
+    "last_content_update" : 1611143865085,
+    "path" : "F:/Download_code/TPE/tpe/R/HnndPRdata/Clustering-by-HNND-PR-Github/test/Demo1.R",
+    "project_path" : "test/Demo1.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

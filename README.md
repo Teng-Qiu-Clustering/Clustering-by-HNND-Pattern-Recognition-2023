@@ -1,5 +1,5 @@
 # Quick start
-Two demos are shown in the **test** file.
+A demo can be found in the **test** file.
 
 # Introduction (Hierarchical Nearest Neighbor Descent, In-Tree, and Clustering)
 

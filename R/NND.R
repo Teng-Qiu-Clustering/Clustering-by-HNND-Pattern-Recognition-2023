@@ -3,26 +3,25 @@
 #' @description Nearest Neighbor Descent (equivalent to Nearest Neighbor Ascent)
 #'
 #'
-#' @param P_Amp
-#' @param knn
+#' @param F density vector
+#' @param knn a list
 #'
-#' @export W
-#' @export I
-#' @export P_Amp
-#' @export W_Max_idx
-#' @export K_optimal
+#' @return W:   edge weight vector;
+#' @return I:   parent node vector;
+#' @return roots:   indexes of the root nodes;
+#' @return K_optimal:   which neighbor each parent node is;
 #'
-#' @examples
+#' @author Teng Qiu
 #'
-NND = function(P_Amp,knn){
+NND = function(F,knn){
 # NND_no_density_estimation_V1_memory_saving
-  N = length(P_Amp)
+  N = length(F)
 
   W = vector(length = N)
   I = vector(length = N)
   K_optimal = vector(length = N)
   for (i in 1:N){
-    j = which(P_Amp[i]<P_Amp[knn$nn.index[i,]])
+    j = which(F[i]<F[knn$nn.index[i,]])
     if (length(j)==1){
       W[i] = knn$nn.dist[i,j]
       I[i] = knn$nn.index[i,j]
@@ -42,5 +41,5 @@ NND = function(P_Amp,knn){
 
   root_id = which(K_optimal==N)
 
-  return(list(W=W,I=I,P_Amp=P_Amp,W_Max_idx=root_id,K_optimal = K_optimal))
+  return(list(W=W,I=I,roots=root_id,K_optimal = K_optimal))
 }

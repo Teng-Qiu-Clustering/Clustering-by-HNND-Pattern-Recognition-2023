@@ -10,7 +10,6 @@
 #'
 #' @param Label,annotation_data,EvaIndex
 #'
-#' @examples
 #'
 Evaluate_clustering_result = function(data_name,Label,annotation_data,EvaIndex = c('NMI','ARI','MeanFscore')){
   # Note 1 (for NMI_max_version): NMI_max_version = aricode::NMI(A,B,'max') (Note that aricode::AMI(A,B) is problematic, since it outputs the same result as aricode::NMI(A,B))

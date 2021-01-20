@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "#' @title Nearest Neighbor Descent\n#'\n#' @description Nearest Neighbor Descent (equivalent to Nearest Neighbor Ascent)\n#'\n#'\n#' @param F density vector\n#' @param knn a list\n#'\n#' @return W:   edge weight vector;\n#' @return I:   parent node vector;\n#' @return roots:   indexes of the root nodes;\n#' @return K_optimal:   which neighbor each parent node is;\n#'\n#' @author Teng Qiu\n#'\nNND = function(F,knn){\n# NND_no_density_estimation_V1_memory_saving\n  N = length(F)\n\n  W = vector(length = N)\n  I = vector(length = N)\n  K_optimal = vector(length = N)\n  for (i in 1:N){\n    j = which(F[i]<F[knn$nn.index[i,]])\n    if (length(j)==1){\n      W[i] = knn$nn.dist[i,j]\n      I[i] = knn$nn.index[i,j]\n      K_optimal[i] = j\n    } else if (length(j)>1){\n      id = which.min(knn$nn.dist[i,j])\n      j = j[id]\n      W[i] = knn$nn.dist[i,j]\n      I[i] = knn$nn.index[i,j]\n      K_optimal[i] = j\n    } else{\n      W[i] = 0\n      I[i] = i\n      K_optimal[i] = N\n    }\n  }\n\n  root_id = which(K_optimal==N)\n\n  return(list(W=W,I=I,roots=root_id,K_optimal = K_optimal))\n}\n",
+    "created" : 1611142562111.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "409297787",
+    "id" : "50173199",
+    "lastKnownWriteTime" : 1611146925,
+    "last_content_update" : 1611146925230,
+    "path" : "F:/Download_code/TPE/tpe/R/HnndPRdata/Clustering-by-HNND-PR-Github/R/NND.R",
+    "project_path" : "R/NND.R",
+    "properties" : {
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

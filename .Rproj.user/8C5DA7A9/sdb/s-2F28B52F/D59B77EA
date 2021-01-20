@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "Package: HnndPR\nType: Package\nTitle: Hierarchical Nearest Neighbor Descent, In-Tree, and Clustering\nVersion: 0.1.0\nAuthor: Teng Qiu, Yongjie Li\nMaintainer: Teng Qiu <qiutengcool@163.com>\nDescription: fast hierarchical density-based clustering method\nLicense: MIT license\nEncoding: UTF-8\nLazyData: true\nImports: RcppHNSW,nabor \nRoxygenNote: 6.1.1\n",
+    "created" : 1611146173962.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4268750907",
+    "id" : "D59B77EA",
+    "lastKnownWriteTime" : 1611146962,
+    "last_content_update" : 1611146962737,
+    "path" : "F:/Download_code/TPE/tpe/R/HnndPRdata/Clustering-by-HNND-PR-Github/DESCRIPTION",
+    "project_path" : "DESCRIPTION",
+    "properties" : {
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "dcf"
+}

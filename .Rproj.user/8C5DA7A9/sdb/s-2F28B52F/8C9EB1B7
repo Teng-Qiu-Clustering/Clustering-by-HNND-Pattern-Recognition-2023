@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "#' @title Decision Graph\n#' @description Decision Graph for determing the inter-cluster edge nodes\n#'\n#' @param W edge weight vector\n#' @param I parent node vector\n#' @param Density density vector\n#'\n#' @return peaks: indexes of the densit-peak nodes\n#'\nDecisionGraph=function(W,I,Density,Log = \"xy\"){\n\n\n  A = (Density+Density[I])/2\n  B = W\n\n\n  if (Log == \"y\"){\n    plot(A,B, xlab = \"Mean Density\",ylab = 'Edge Length (logscale)',\n         cex = 0.7,log = 'y')\n  } else if (Log == \"x\"){\n    plot(A,B, xlab = \"Mean Density (logscale)\",ylab = 'Edge Length',\n         cex = 0.7,log = 'x')\n  } else if (Log == \"xy\"){\n    plot(A,B, xlab = \"Mean Density (logscale)\",ylab = 'Edge Length (logscale)',\n         cex = 0.7,log = 'xy')\n  } else {\n    plot(A,B, xlab = \"Mean Density\",ylab = 'Edge Length',\n         cex = 0.7)\n  }\n\n  print('Click on plot to select several thresholds;push \"finish\" button at the top-right of the plot to end \\n')\n  threshold <- locator()\n  print('get the coordinates of the mouse')\n  peaks = vector()\n  for (i in 1:length(threshold$x)){\n    rho <- threshold$x[i]\n    delta <- threshold$y[i]\n    peaks <- c(peaks,which(A > rho &  B > delta))\n  }\n  peaks = unique(peaks)\n\n  points(A[peaks],B[peaks], col = 2:(1 + length(peaks)),\n         pch = 19,cex = 0.7)\n\n  return(peaks)\n}\n\n\n",
+    "created" : 1611147099504.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1468484041",
+    "id" : "8C9EB1B7",
+    "lastKnownWriteTime" : 1611147825,
+    "last_content_update" : 1611147825452,
+    "path" : "F:/Download_code/TPE/tpe/R/HnndPRdata/Clustering-by-HNND-PR-Github/R/DecisionGraph.R",
+    "project_path" : "R/DecisionGraph.R",
+    "properties" : {
+    },
+    "relative_order" : 10,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

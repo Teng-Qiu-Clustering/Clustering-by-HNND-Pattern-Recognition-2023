@@ -1,24 +1,30 @@
-#' @title Hierachical Nearest Neighbor Descent
-#'
-#' @description Hierachical Nearest Neighbor Descent (equivalent to Hierachical Nearest Neighbor Ascent)
-#'
-#' @param x
-#' @param K
-#' @param h
-#' @param disName
-#' @param reuse_tree_contruction
-#'
-#' @export I,W,Label,Totoltime_DG
-#' @export W
-#' @export Label
-#' @export Totoltime_DG
-#'
-#' @examples
-#'
-HNND = function(
+##' @title Clustering by Hierachical Nearest Neighbor Descent
+##'
+##' @description Clustering by Hierachical Nearest Neighbor Descent (equivalent to: Clustering by Hierachical Nearest Neighbor Ascent)
+##'
+##' @param x dataset (a matrix with rows denoting samples and columns denoting features
+##' @param K number of nearest neighbors (emperical value: the nearest integer to log2(N), where N is the size of the dataset)
+##' @param h a threshold for deciding when to start the ND layer (usually h = k)
+##' @param LogPlot whether to show the decision graph in the log scale
+##' @param disName distance measurement ('euclidean','cosine', and'l2' are supported)
+##'
+##' @return I:    parent node vector;
+##' @return W:    edge weigth vector;
+##' @return Label:    cluster label vector;
+##' @return Totoltime_DG:     time spent on the interactive operation on the Decision Graph (which is user-dependent and is thus suggested to be subtracted from the total runtime);
+##'
+##'
+##' @examples
+##' data('cytof.benchmark.h1')
+##' x = cytof.benchmark.h1$x
+##' K = ceiling(log2(nrow(x)))
+##' result <- HNND_C(x = x,K = K,h = K,disName = "euclidean",LogPlot = '')
+##'
+##' @author Teng Qiu
+HNND_C = function(
   x,
   K = 20,
-  h = 50,
+  h = 20,
   disName = "euclidean",
   LogPlot = ''){
 
@@ -51,7 +57,7 @@ HNND = function(
   )
 
   print("density estimation...")
-  Density_initial = simlified_knn_density_estimation_v1(knn,K)
+  Density_initial = simlified_knn_density_estimation_v1(knn)
 
   print("1st round NND:")
   nnd = NND(Density_initial,knn)
@@ -59,8 +65,8 @@ HNND = function(
   I=nnd$I
   W=nnd$W
 
-  root_id = nnd$W_Max_idx
-  nnd_root_initial = nnd$W_Max_idx
+  root_id = nnd$roots
+  nnd_root_initial = nnd$roots
   layer = 1
 
   print("other round NND:")
@@ -94,7 +100,7 @@ HNND = function(
       nnd = NND(Density_initial[root_id],knn)
       I[root_id]=root_id[nnd$I]
       W[root_id]=nnd$W
-      root_id = root_id[nnd$W_Max_idx]
+      root_id = root_id[nnd$roots]
     }else{
       I[root_id]=min(root_id)
       W[root_id]= apply(x[root_id,],1,function(z,y=x[min(root_id),]) (sum((z-y)^2))^0.5)
@@ -115,11 +121,7 @@ HNND = function(
   # Cut edges ---------------------------------------------------------------
 
   time_DG<-system.time({
-    temp = list(W_forInTree = W,
-                I_forInTree = I,
-                Density_initial = Density_initial)
-    result = DecisionGraph(temp,Log = LogPlot)
-    peaks = result$peaks
+    peaks = DecisionGraph(W,I,Density_initial,Log = LogPlot)
   })[3]
 
   # search root -----

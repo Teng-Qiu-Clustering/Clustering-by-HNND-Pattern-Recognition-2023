@@ -3,20 +3,20 @@
 #' @description Nearest Descent (equivalent to Nearest Ascent)
 #'
 #'
-#' @param P_Amp
-#' @param x
-#' @param disName
+#' @param F density vector
+#' @param x test dataset
+#' @param disName distanc measurement
 #'
-#' @export W
-#' @export I
-#' @export P_Amp
-#' @export root
+#' @return W:   edge weight vector;
+#' @return I:   parent node vector;
+#' @return F:   density vector;
+#' @return root:   index of the root node (there is only one root node);
 #'
-#' @examples
+#' @author Teng Qiu
 #'
-ND = function(P_Amp,x,disName = 'euclidean'){
+ND = function(F,x,disName = 'euclidean'){
   # ND_less_space_consumption
-  N = length(P_Amp)
+  N = length(F)
   W=vector("numeric",N)
   I=vector("numeric",N)
   Totoltime = vector("numeric",N)
@@ -26,7 +26,7 @@ ND = function(P_Amp,x,disName = 'euclidean'){
     # print(N)
     # print(paste(i,'/',N))
     Di=vector("numeric",N)
-    Ci = P_Amp[i]-P_Amp
+    Ci = F[i]-F
     Di[Ci>0]=Inf
     Di[(Ci==0)&(i>=seq(N))]=Inf
     candidate_id = which(!is.infinite(Di))
@@ -56,5 +56,5 @@ ND = function(P_Amp,x,disName = 'euclidean'){
     #   print(c("average time:",mean(Totoltime[1:10])))
     # }
   }
-  return(list(W=W,I=I,P_Amp=P_Amp,root =W_Max_idx ))
+  return(list(W=W,I=I,root =W_Max_idx ))
 }

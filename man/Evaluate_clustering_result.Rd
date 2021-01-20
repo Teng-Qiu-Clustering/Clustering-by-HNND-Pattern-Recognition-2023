@@ -7,6 +7,11 @@
 Evaluate_clustering_result(data_name, Label, annotation_data,
   EvaIndex = c("NMI", "ARI", "MeanFscore"))
 }
+\arguments{
+\item{Label, annotation_data, EvaIndex}{}
+
+\item{EvaIndex}{}
+}
 \description{
 Evaluate clustering results
 my_evaluate_clustering_result
@@ -14,4 +19,3 @@ my_evaluate_clustering_result
 \examples{
 
 }
-\keyword{Evaluate_clustering_result}
