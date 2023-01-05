@@ -1,7 +1,7 @@
 # Quick start
 A demo can be found in the **test** file.
 
-# Introduction (Hierarchical Nearest Neighbor Descent, In-Tree, and Clustering)
+# Introduction (Hierarchical Nearest Neighbor Descent, In-Tree, and Clustering, **accepted by Pattern Recognition, 2023**)
 
 Recently, we have proposed a physically-inspired graph-theoretical method,
 called the Nearest Descent (ND), which is capable of organizing a dataset
