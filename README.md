@@ -19,3 +19,4 @@ datasets. The experimental results also show that HNND-C achieves
 overall better performance than some state-of-the-art clustering methods.
 
 See detais in https://www.sciencedirect.com/science/article/abs/pii/S0031320323000018.
+A 50 days' free access (before March 03, 2023) to the articel is generously provided by Pattern Recognition at https://authors.elsevier.com/c/1gPhA77nKkWRI. 
