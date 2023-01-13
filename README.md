@@ -1,7 +1,7 @@
 # Quick start
 A demo can be found in the **test** file.
 
-# Introduction (Hierarchical Nearest Neighbor Descent, In-Tree, and Clustering, **accepted by Pattern Recognition, 2023**)
+# Introduction (Hierarchical Nearest Neighbor Descent, In-Tree, and Clustering, **Pattern Recognition, 2023**)
 
 Recently, we have proposed a physically-inspired graph-theoretical method,
 called the Nearest Descent (ND), which is capable of organizing a dataset
@@ -17,3 +17,5 @@ more efficient than ND-based clustering (ND-C) as well. This is well proved
 by the experimental results on five high-dimensional and large-size mass cytometry
 datasets. The experimental results also show that HNND-C achieves
 overall better performance than some state-of-the-art clustering methods.
+
+See detais in https://www.sciencedirect.com/science/article/abs/pii/S0031320323000018.
